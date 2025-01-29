@@ -49,5 +49,6 @@ console.log(divisao)
 
 let c = 27
 
-let 
+let fahrenheit = c * 9 / 5 + 32
+console.log(fahrenheit)
 
