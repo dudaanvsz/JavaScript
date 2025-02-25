@@ -1,0 +1,12 @@
+#texto, #paragrafo1, #paragrafo2, #paragrafo3 {
+    transition: 0.3s ease;
+}
+#bloco {
+    padding: 10px;
+    border: 1px solid black;
+}
+#imagem, #imagemRedonda {
+    width: 100px;
+    height: 100px;
+    transition: 0.3s ease;
+}
