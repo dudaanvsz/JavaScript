@@ -26,17 +26,17 @@ passe.addEventListener("mouseout", function() {
     passe.style.backgroundColor = " lightgrey"
 }) 
  
-//
+//ex 5
 function aumentarImagem() {
     let img = document.getElementById("imagem");
     img.style.width = "200px";
     img.style.height = "200px";
 }
-
+//ex 6
 function arredondarImagem() {
     document.getElementById("imagemRedonda").style.borderRadius = "50%";
 }
-
+//ex 7
 function alterarParagrafo1() {
     let p = document.getElementById("paragrafo1");
     p.style.backgroundColor = "yellow";
