@@ -1,0 +1,263 @@
+/* Reset geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #000;
+    color: #fff;
+    scroll-behavior: smooth;
+  }
+  
+  /* Navegação */
+  header {
+    background-color: #000;
+    padding: 20px 40px;
+    border-bottom: 1px solid rgb(152, 109, 255);
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+  }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  nav a:hover {
+    color: rgb(152, 109, 255);
+  }
+  
+  /* Banner */
+  .banner {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(145deg, #000, #1a001f);
+  }
+  
+  .banner h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: rgb(152, 109, 255);
+  }
+  
+  .banner p {
+    font-size: 20px;
+  }
+  
+  /* Sobre */
+  .sobre {
+    padding: 60px 20px;
+    text-align: center;
+  }
+  
+  .sobre h2 {
+    font-size: 32px;
+    color: rgb(152, 109, 255);
+    margin-bottom: 40px;
+  }
+  
+  .sobre-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .texto-sobre {
+    flex: 1;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 500px;
+  }
+  
+  .foto-perfil img {
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid rgb(152, 109, 255);
+    box-shadow: 0 0 15px rgba(152, 109, 255, 0.4);
+  }
+  
+  /* Habilidades */
+  .habilidades {
+    padding: 60px 20px;
+    text-align: center;
+  }
+  
+  .habilidades h2 {
+    color: rgb(152, 109, 255);
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+  
+  .habilidades-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+  
+  .card {
+    background-color: #111;
+    border: 2px solid rgb(152, 109, 255);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    width: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .card img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    font-weight: bold;
+    color: rgb(152, 109, 255);
+  }
+  
+  .card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(152, 109, 255, 0.5);
+  }
+  
+  .texto-habilidade {
+    max-width: 600px;
+    font-size: 18px;
+    padding: 20px;
+    background-color: #111;
+    border-left: 5px solid rgb(152, 109, 255);
+  }
+  
+  /* Projetos */
+  .projetos {
+    padding: 60px 20px;
+    text-align: center;
+  }
+  
+  .projetos h2 {
+    font-size: 32px;
+    color: rgb(152, 109, 255);
+    margin-bottom: 40px;
+  }
+  
+  .projetos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .projeto-item {
+    background-color: #111;
+    padding: 20px;
+    border-radius: 12px;
+    width: 220px;
+    transition: transform 0.3s;
+    border: 2px solid rgb(152, 109, 255);
+  }
+  
+  .projeto-item img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .projeto-item p {
+    color: rgb(152, 109, 255);
+    font-weight: bold;
+  }
+  
+  .projeto-item:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Contato */
+  #contato {
+    padding: 60px 20px;
+    text-align: center;
+  }
+  
+  #contato h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: rgb(152, 109, 255);
+  }
+  
+  .social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .social-buttons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  
+  .linkedin {
+    background-color: #0077b5;
+  }
+  .instagram {
+    background-color: #E1306C;
+  }
+  .whatsapp {
+    background-color: #25D366;
+  }
+  .website {
+    background-color: #333;
+  }
+  .github {
+    background-color: #24292e;
+  }
+  
+  .social-buttons a:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+  
+  /* Rodapé */
+  footer {
+    background-color: #111;
+    color: #888;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+  }
+  
+  

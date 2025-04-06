@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <title>Portfólio - Eduarda Neves</title>
+
+  <!-- Font Awesome e CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Cabeçalho -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Banner -->
+  <section id="home" class="banner">
+    <h2>Opa! Me chamo Eduarda Neves :)</h2>
+    <p>Seja bem-vindo ao meu portfólio.</p>
+  </section>
+
+  <!-- Sobre mim -->
+  <section id="sobre" class="sobre">
+    <h2>Um pouco sobre mim</h2>
+    <div class="sobre-container">
+      <div class="texto-sobre">
+        <p>Meu nome é Eduarda Neves, tenho 17 anos e sou estudante de Desenvolvimento de Sistemas.
+          Atuo como Desenvolvedora Front-end, com experiência no desenvolvimento de interfaces modernas, responsivas e funcionais, utilizando tecnologias como React.js, Next.js, JavaScript, TypeScript, Styled Components e Material UI. Também possuo familiaridade com Node.js no Back-end e no consumo de APIs REST.
+          Tenho conhecimento em HTML, CSS, Java, versionamento com Git/GitHub, e prototipação com Figma. Busco sempre melhorar minhas habilidades e acompanhar as tendências do mercado.
+        </p>
+      </div>
+      <div class="foto-perfil">
+        <img src="IMG/perfil.jpeg" alt="Foto de perfil">
+      </div>
+    </div>
+  </section>
+
+  <!-- Habilidades -->
+  <section id="habilidades" class="habilidades">
+    <h2>Habilidades</h2>
+    <div class="habilidades-container">
+      
+      <div class="cards">
+        <div class="card" onmouseenter="mudarTexto('HTML é a linguagem de marcação usada para estruturar conteúdos na web.')">
+          <img src="IMG/html5.png" alt="html5">
+          <p>HTML5</p>
+        </div>
+
+        <div class="card" onmouseenter="mudarTexto('CSS é usado para estilizar páginas HTML, deixando elas bonitas.')">
+          <img src="IMG/css.png" alt="css3">
+          <p>CSS3</p>
+        </div>
+
+        <div class="card" onmouseenter="mudarTexto('JavaScript torna as páginas interativas e dinâmicas.')">
+          <img src="IMG/js.png" alt="JavaScript">
+          <p>JavaScript</p>
+        </div>
+
+        <div class="card" onmouseenter="mudarTexto('React é uma biblioteca JavaScript para interfaces modernas.')">
+          <img src="IMG/react.png" alt="react.js">
+          <p>React</p>
+        </div>
+
+        <div class="card" onmouseenter="mudarTexto('SQL Server é um banco de dados relacional para armazenar dados.')">
+          <img src="IMG/SQL.png" alt="sql">
+          <p>SQL Server</p>
+        </div>
+      </div>
+
+      <div class="texto-habilidade" id="textoHabilidade">
+        <p>Passe o cursor do mouse em cada card para ver o que essa habilidade faz.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projetos -->
+  <section id="projetos" class="projetos">
+    <h2>Projetos</h2>
+    <div class="projetos-container">
+      <div class="projeto-item">
+        <img src="IMG/projeto1.png" alt="Projeto 1">
+        <p>Landing Page moderna com HTML, CSS e JS</p>
+      </div>
+      <div class="projeto-item">
+        <img src="IMG/projeto2.png" alt="Projeto 2">
+        <p>Portfólio pessoal responsivo</p>
+      </div>
+      <div class="projeto-item">
+        <img src="IMG/projeto3.png" alt="Projeto 3">
+        <p>Interface React com consumo de API</p>
+      </div>
+      <div class="projeto-item">
+        <img src="IMG/projeto4.png" alt="Projeto 4">
+        <p>Dashboard com gráficos usando Chart.js</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contato">
+    <h2>Contato</h2>
+    <div class="social-buttons">
+      <a href="https://www.linkedin.com/in/dudanvsz16" class="linkedin" target="_blank">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="https://www.instagram.com/dudanvsz" class="instagram" target="_blank">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://wa.me/5511977987926" class="whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="https://www.seusite.com.br" class="website" target="_blank">
+        <i class="fas fa-globe"></i>
+      </a>
+      <a href="https://github.com/seu-usuario" class="github" target="_blank">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; 2025 Eduarda Neves. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Script para mudar o texto das habilidades -->
+  <script>
+    function mudarTexto(texto) {
+      const textoDiv = document.getElementById("textoHabilidade");
+      if (textoDiv) {
+        textoDiv.innerHTML = "<p>" + texto + "</p>";
+      }
+    }
+  </script>
+</body>
+</html>
