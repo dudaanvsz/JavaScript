@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    
+    box-sizing: border-box;
+    font-family: cursive;
+    outline: none;
+    
+  }
+  
+  body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: pink;
+  }
+  
+  header {
+    padding: 15px 100px 8px;
+    display: flex;
+    align-items: center;
+    color:#ff007f ;
+ 
+  }
+  
+  main {
+    max-width: 550px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    
+  }
+  
+  .bxs-chevron-up-circle{
+    color: green;
+  }
+  .bxs-chevron-down-circle {
+    color: red;
+  }
+  
+  .resumo {
+    display: flex;
+    padding: 10px 0;
+    gap: 40px;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .resumo > div {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 5px #ff007f;
+    border-radius: 10px;
+    padding: 10px;
+    width: 150px;
+    
+  }
+  
+  .novo-item {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+  }
+  
+  .divDesc, .divTipo, .divValor {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .novoItem > button {
+    background-color: #788699;
+    color: white;
+    border: none;
+    padding: 0 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 34px;
+  }
+  
+  input, select {
+    padding: 5px;
+    
+    
+  }
+  
+  .tabela-itens {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+ 
+  }
+  
+  table {
+    width: 98%;
+    padding: 20px 0;
+    border-radius: 5px;
+    
+    
+    
+  }
+  
+  th {
+    text-align: start;
+    border-bottom: inset;
+    padding-bottom: 5px;
+    color: ;
+    
+  }
+  
+  i {
+    font-size: 25px;
+  }
+  
+  .coluna-acao button, #botao-adicionar {
+    padding: 7px 2px;
+    text-align: center;
+    border: 1px solid ;
+    background-color: #ff007f;
+    border-radius: 5px;
+    color: rgb(255, 219, 237);
+  }
+  
+  input, select {
+    border-radius: 7px;
+    border: 2px solid #ff007f;
+  }
+  
+  .columnAcao > button {
+    background: transparent;
+    border: none;
+  }
+  
+  .columnValor {
+    width: 30%;
+  }
+  
+  .columnTipo {
+    width: 80px;
+    text-align: center;
+  }
+  
+  img {
+    width: 130px;
+    margin: 0 25px;
+    padding: 25px;
+}
