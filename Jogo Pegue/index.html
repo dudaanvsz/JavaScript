@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jogo Pegue</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1 class="titulo">Jogo Pegue!</h1>
+
+    <div class="controles">
+      <label for="dificuldade">Escolha a dificuldade:</label>
+      <select id="dificuldade">
+        <option value="facil">Fácil</option>
+        <option value="medio">Médio</option>
+        <option value="dificil">Difícil</option>
+      </select>
+      <button id="comecar">Começar</button>
+    </div>
+
+    <p class="contador">Cliques: <span id="pontuacao">0</span></p>
+    <p class="cronometro">Tempo restante: <span id="tempo">10</span>s</p>
+
+    <div id="campo-jogo">
+      <div id="alvo"></div>
+
+      <div id="painel-fim">
+        <h2>Tempo esgotado!</h2>
+        <p>Você fez <span id="pontos-finais">0</span> ponto(s).</p>
+        <button id="reiniciar">Jogar novamente</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="rodape">
+    Desenvolvido por: Maria Eduarda Neves, Maria Clara Franco e Pedro Henrique Soares | TDS2
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
