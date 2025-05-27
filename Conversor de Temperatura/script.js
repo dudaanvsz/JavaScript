@@ -31,7 +31,6 @@ function converter() {
 
     resultado.innerHTML = `Resultado: <strong>${convertido.toFixed(2)} ${unidade}</strong>`;
 
-    // Escolher ícone de clima com base na temperatura em Celsius
     let tempCelsius = tipo === 'CtoF' ? valor : convertido;
 
     if (tempCelsius < 18) {
