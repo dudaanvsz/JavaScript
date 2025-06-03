@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quantas Bolinhas?</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #fce3fa;
+      color: #000;
+      font-family: 'Trebuchet MS', sans-serif;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      background-color: rgba(255, 194, 252, 0.9);
+      border-radius: 15px;
+      padding: 25px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 0 20px rgba(38, 0, 255, 0.3);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 8px 0 20px;
+      font-weight: bold;
+    }
+
+    #imagem-bolinhas {
+      margin: 15px 0;
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    input {
+      display: block;
+      margin: 0 auto 15px auto;
+      padding: 10px;
+      font-size: 1.1em;
+      border-radius: 8px;
+      border: 2px solid #ff02b3;
+      width: 100px;
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #ff00c8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1em;
+      margin: 5px;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background-color: #e000b5;
+    }
+
+    .mensagem {
+      margin: 15px 0;
+      font-size: 1.2em;
+      min-height: 1.5em;
+    }
+
+    .historico {
+      margin-top: 15px;
+      background-color: rgba(255, 0, 179, 0.308);
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .historico span {
+      margin: 0 5px;
+      background: #ffe0e0;
+      padding: 5px 8px;
+      border-radius: 5px;
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Acerte a quantidade de bolinhas! ⚪</h1>
+    <p id="info-palpite">10 palpites (De 1 a 100)</p>
+    <img src="bolinhas.png" alt="Imagem" id="imagem-bolinhas" />
+
+    <input type="number" id="palpite" min="1" max="100" placeholder="??">
+
+    <button onclick="verificarPalpite()" id="botao-palpite">Tentar</button>
+    <button onclick="reiniciarJogo()">Reiniciar</button>
+
+    <div class="mensagem" id="mensagem"></div>
+    <div class="historico" id="historico">
+      <strong>Palpites anteriores:</strong>
+      <div id="lista-palpite">Nenhum ainda!</div>
+    </div>
+  </div>
+
+  <script>
+    let numeroSecreto;
+    let tentativas;
+    const maxTentativas = 10;
+    let palpitesFeitos = [];
+
+    function gerarNumero() {
+      numeroSecreto = Math.floor(Math.random() * 100) + 1;
+      tentativas = 0;
+      palpitesFeitos = [];
+      document.getElementById('mensagem').textContent = '';
+      document.getElementById('lista-palpite').textContent = 'Nenhum ainda!';
+      document.getElementById('palpite').disabled = false;
+      document.getElementById('botao-palpite').disabled = false;
+      document.getElementById('historico').style.display = 'block';
+      document.getElementById('info-palpite').style.display = 'block';
+      console.log('(Debug) Número secreto:', numeroSecreto);
+    }
+
+    function verificarPalpite() {
+      const entradaPalpite = document.getElementById('palpite');
+      const palpite = Number(entradaPalpite.value);
+
+      if (palpite < 1 || palpite > 100 || !palpite) {
+        document.getElementById('mensagem').textContent = '⚠️ Escolha um número entre 1 e 100!';
+        return;
+      }
+
+      tentativas++;
+      palpitesFeitos.push(palpite);
+      atualizarHistorico();
+
+      if (palpite === numeroSecreto) {
+        document.getElementById('mensagem').textContent = `Uau! Você acertou! Existem ${numeroSecreto} bolinhas no pote! :)`;
+        terminarJogo();
+        // Ocultar histórico e texto "10 palpites..."
+        document.getElementById('historico').style.display = 'none';
+        document.getElementById('info-palpite').style.display = 'none';
+      } else if (tentativas >= maxTentativas) {
+        document.getElementById('mensagem').textContent = `❌ Suas tentativas acabaram! Havia ${numeroSecreto} bolinhas no pote.`;
+        terminarJogo();
+      } else if (palpite < numeroSecreto) {
+        document.getElementById('mensagem').textContent = `Tem MAIS bolinhas do que ${palpite}!`;
+      } else {
+        document.getElementById('mensagem').textContent = `Tem MENOS bolinhas do que ${palpite}!`;
+      }
+
+      entradaPalpite.value = '';
+      entradaPalpite.focus();
+    }
+
+    function atualizarHistorico() {
+      document.getElementById('lista-palpite').innerHTML = palpitesFeitos
+        .map(num => `<span>${num}</span>`)
+        .join(' ');
+    }
+
+    function terminarJogo() {
+      document.getElementById('palpite').disabled = true;
+      document.getElementById('botao-palpite').disabled = true;
+    }
+
+    function reiniciarJogo() {
+      gerarNumero();
+    }
+
+    window.onload = gerarNumero;
+  </script>
+
+</body>
+</html>
