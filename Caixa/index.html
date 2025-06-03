@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎶 Simulador de Caixa - Loja de Instrumentos 🎶</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
+        body {
+            background-color: #f8f0e5; 
+            margin: 0;
+            padding: 0;
+            font-family: 'Questrial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: rgb(209, 176, 154); 
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: center;
+        }
+        h2 {
+            margin-top: 0;
+        }
+        label {
+            display: block;
+            margin: 10px 0;
+            text-align: left;
+        }
+        input {
+            padding: 5px;
+            width: 100%;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            margin: 8px 4px;
+            padding: 8px 15px;
+            border: none;
+            background-color: #000000;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        ul {
+            text-align: left;
+            padding-left: 20px;
+        }
+        .total, .troco {
+            background-color: #e9e9e9;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        #descontoMsg {
+            margin: 5px 0;
+            color: green;
+            font-weight: bold;
+        }
+        #imagem-canto {
+    position: absolute;
+    bottom: 10px;
+    right: 2px;
+    width: 700px;  
+    height: auto;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🎸🥁 Loja de Instrumentos 🎹🎺</h2>
+        <img src="instrumentos.png" alt="Imagem" id="imagem-canto" />
+
+
+        <label>Produto:
+            <input type="text" id="produto">
+        </label>
+        <label>Valor (R$):
+            <input type="number" id="valor" step="0.01">
+        </label>
+        <label>Quantidade:
+            <input type="number" id="quantidade">
+        </label>
+
+        <button onclick="adicionarItem()">➕ Adicionar à compra</button>
+        <button onclick="limparTudo()">🗑️ Limpar Tudo</button>
+
+        <h3>🧾 Itens:</h3>
+        <ul id="listarItens"></ul>
+
+        <div class="total">
+            <h3>Total: R$ <span id="total">0.00</span></h3>
+            <h4 id="descontoMsg"></h4>
+        </div>
+
+        <label>Valor pago:
+            <input type="number" id="valorPago" step="0.01">
+        </label>
+        <button onclick="calcularTroco()">💸 Calcular Troco</button>
+
+        <div class="troco">
+            <h3>Troco: R$ <span id="troco">0.00</span></h3>
+        </div>
+    </div>
+
+    <script>
+        let total = 0
+
+        function adicionarItem() {
+            const produto = document.getElementById("produto").value
+            const valor = parseFloat(document.getElementById("valor").value)
+            const quantidade = parseInt(document.getElementById("quantidade").value)
+
+            if (!produto || isNaN(valor) || isNaN(quantidade)) {
+                alert("⚠️Preencha todos os campos corretamente!")
+                return
+            }
+
+            const subtotal = valor * quantidade
+            total += subtotal
+
+            const lista = document.getElementById("listarItens")
+            const item = document.createElement("li")
+            item.textContent = `${produto}  - R$${valor.toFixed(2)} x ${quantidade} = R$${subtotal.toFixed(2)}`
+            lista.appendChild(item)
+
+            aplicarDesconto()
+
+            document.getElementById("produto").value = ""
+            document.getElementById("valor").value = ""
+            document.getElementById("quantidade").value = ""
+        }
+
+        function aplicarDesconto() {
+            let totalComDesconto = total
+            const descontoMsg = document.getElementById("descontoMsg")
+
+            if (total >= 500) {
+                const desconto = total * 0.1
+                totalComDesconto = total - desconto
+                descontoMsg.textContent = "🎉 Desconto de 10% aplicado! 🎉"
+            } else {
+                descontoMsg.textContent = ""
+            }
+
+            document.getElementById("total").textContent = totalComDesconto.toFixed(2)
+        }
+
+        function calcularTroco() {
+            const valorPago = parseFloat(document.getElementById("valorPago").value)
+            let totalAtual = total
+
+            if (total >= 500) {
+                totalAtual = total - (total * 0.1)
+            }
+
+            if (isNaN(valorPago) || valorPago < totalAtual) {
+                alert("❌ Valor pago insuficiente ou inválido!")
+                return
+            }
+
+            const troco = valorPago - totalAtual
+            document.getElementById("troco").textContent = troco.toFixed(2)
+        }
+
+        function limparTudo() {
+            document.getElementById("listarItens").innerHTML = ""
+            document.getElementById("total").textContent = "0.00"
+            document.getElementById("troco").textContent = "0.00"
+            document.getElementById("valorPago").value = ""
+            document.getElementById("descontoMsg").textContent = ""
+            total = 0
+        }
+    </script>
+</body>
+</html>
