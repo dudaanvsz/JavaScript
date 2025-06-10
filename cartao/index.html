@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cartões Temáticos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      padding: 40px;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      width: 200px;
+      height: 120px;
+      perspective: 1000px;
+    }
+
+    .cartao {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+
+    .cartao.virado {
+      transform: rotateY(180deg);
+    }
+
+    .frente, .verso {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+      backface-visibility: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      text-align: center;
+      color: white;
+    }
+
+    .verso {
+      transform: rotateY(180deg);
+    }
+
+    /* Cores individuais por tema */
+    .aniversario .frente { background-color: #ff69b4; }
+    .aniversario .verso { background-color: #ffa6c9; }
+
+    .natal .frente { background-color: #d62828; }
+    .natal .verso { background-color: #68a06c; }
+
+    .maes .frente { background-color: #f56d6d; }
+    .maes .verso { background-color: #f88686; }
+
+    .namorados .frente { background-color: #c9184a; }
+    .namorados .verso { background-color: #ff4d6d; }
+
+    .anonovo .frente { background-color: #f0c808; }
+    .anonovo .verso { background-color: #ffdd57; }
+
+    .pascoa .frente { background-color: #9d4edd; }
+    .pascoa .verso { background-color: #c77dff; }
+
+    .professor .frente { background-color: #219ebc; }
+    .professor .verso { background-color: #8ecae6; }
+
+    .desculpas .frente { background-color: #adb5bd; }
+    .desculpas .verso { background-color: #ced4da; color: black; }
+
+    .motivacional .frente { background-color: #38b000; }
+    .motivacional .verso { background-color: #70e000; }
+
+    .festajunina .frente { background-color: #ff9f1c; }
+    .festajunina .verso { background-color: #ffbf69; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="cartao aniversario" onclick="virar(this)">
+      <div class="frente">Aniversário 🎉🎈</div>
+      <div class="verso">Feliz Aniversário! Que seu dia seja incrível!🎂❤️</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="cartao natal" onclick="virar(this)">
+      <div class="frente">Natal🎄</div>
+      <div class="verso">Feliz Natal! Muita paz, amor e esperança!🎅🎁</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="cartao maes" onclick="virar(this)">
+      <div class="frente">Dia das Mães 💐❤️</div>
+      <div class="verso">Feliz Dia das Mães! Você é a melhor mãe do mundo! 👩‍👧</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="cartao namorados" onclick="virar(this)">
+      <div class="frente">Dia dos Namorados 💘</div>
+      <div class="verso">Te amo! Feliz Dia dos Namorados!🌹💕</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="cartao anonovo" onclick="virar(this)">
+      <div class="frente">Ano Novo 🎆</div>
+      <div class="verso">Feliz Ano Novo! Que venha um ano incrível!🥂🎊</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="cartao pascoa" onclick="virar(this)">
+      <div class="frente">Páscoa 🐰</div>
+      <div class="verso">Feliz Páscoa! Que o amor renasça em seu coração!🥚🌸</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="cartao professor" onclick="virar(this)">
+      <div class="frente">Dia do Professor👩‍🏫</div>
+      <div class="verso">Obrigado por ensinar com tanto carinho!📚🍎</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="cartao desculpas" onclick="virar(this)">
+      <div class="frente">Desculpas💌</div>
+      <div class="verso">Me desculpa pelo que aconteceu. Quero consertar as coisas. 😔🙏</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="cartao motivacional" onclick="virar(this)">
+      <div class="frente">Motivacional🌟</div>
+      <div class="verso">Você é capaz de tudo! Nunca desista dos seus sonhos!💪✨</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="cartao festajunina" onclick="virar(this)">
+      <div class="frente">Festa Junina🎇🪗</div>
+      <div class="verso">É hora do arraiá! Bora dançar quadrilha e comer milho!🎶🌽</div>
+    </div>
+  </div>
+
+  <script>
+    function virar(elemento) {
+      elemento.classList.toggle("virado");
+    }
+  </script>
+
+</body>
+</html>
