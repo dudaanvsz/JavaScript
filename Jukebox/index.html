@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Jukebox Visual</title>
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+        body {
+            text-align: center;
+            transition: background 0.8s;
+            color: #000000;
+            
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #imagem img {
+            margin: 0 auto;
+            max-width: 300px;
+            margin-top: 20px;
+            border-radius: 10px;
+            width: 200px; 
+            height: 200px;
+        }
+        #musica-nome {
+            margin-top: 15px;
+            font-size: 20px;
+            font-weight: bold;
+         
+        }
+    </style>
+</head>
+<body style="background-color: #ffe7e7;">
+    <h1>Jukebox</h1>
+    <p>Selecione como está se sentindo e ouça uma música</p>
+
+    <button style="background:#fadd75;" onclick="tocar('alegria')">Alegria</button>
+    <button style="background:#82c9ff;" onclick="tocar('tristeza')">Tristeza</button>
+    <button style="background:#d5ff91;" onclick="tocar('aventura')">Aventura</button>
+    <button style="background:#ff8295;" onclick="tocar('amor')">Amor</button>
+    <button style="background:#bcc3ca;" onclick="tocar('terror')">Mistério</button>
+    <button style="background:#ffb4b4;" onclick="tocar('calma')">Calma</button>
+    <button style="background:#ffb2cd;" onclick="tocar('animacao')">Animação</button>
+    <button style="background:#ecd8a9;" onclick="tocar('suspense')">Suspense</button>
+    <button style="background:#ff0000;" onclick="parar()">Parar</button>
+
+    <div id="musica-nome"></div>
+
+    <div id="imagem">
+        <img src="" id="foto" style="display: none;">
+    </div>
+
+    <audio id="audio" controls style="margin-top: 20px; display: none; margin: 0 auto;"></audio>
+
+    <script>
+        function tocar(tema) {
+            const audio = document.getElementById("audio");
+            const foto = document.getElementById("foto");
+            const nomeMusica = document.getElementById("musica-nome");
+
+            let dados = {
+                alegria: {
+                    musica: "musica.mp3",
+                    imagem: "feliz.png",
+                    cor: "#fadd75",
+                    titulo: "AH LELEK LEK LEK LEK"
+                },
+                tristeza: {
+                    musica: "musica2.mp3",
+                    imagem: "tristeza.png",
+                    cor: "#82c9ff",
+                    titulo: "Supercombo - Amianto"
+                },
+                aventura: {
+                    musica: "musica3.mp3",
+                    imagem: "aventura.png",
+                    cor: "#d5ff91",
+                    titulo: "Dora, A Aventureira "
+                },
+                amor: {
+                    musica: "musica4.mp3",
+                    imagem: "amor.png",
+                    cor: "#ff8295",
+                    titulo: "Larissa Manoela - Pra Ver Se Cola "
+                },
+                terror: {
+                    musica: "musica5.mp3",
+                    imagem: "medo.png",
+                    cor: "#bcc3ca",
+                    titulo: "1 Hora de Música para Dormir TERROR"
+                },
+                calma: {
+                    musica: "musica6.mp3",
+                    imagem: "calma.png",
+                    cor: "#ffb4b4",
+                    titulo: "Tô bem, tô zen, entrei pra faculdade pelo ENEM"
+                },
+                animacao: {
+                    musica: "musica7.mp3",
+                    imagem: "animacao.png",
+                    cor: "#ffb2cd",
+                    titulo: "Phebeas e Ferb"
+                },
+                suspense: {
+                    musica: "musica8.mp3",
+                    imagem: "suspense.png",
+                    cor: "#ecd8a9",
+                    titulo: "Tam Tam Taaam"
+                }
+            };
+
+            const item = dados[tema];
+            if (item) {
+                document.body.style.backgroundColor = item.cor;
+                foto.src = item.imagem;
+                foto.style.display = "block";
+                audio.src = item.musica;
+                audio.style.display = "block";
+                audio.play();
+                nomeMusica.textContent = "Tocando agora: " + item.titulo;
+                nomeMusica.style.color = "#000";
+            }
+        }
+
+        function parar() {
+            const audio = document.getElementById("audio");
+            const foto = document.getElementById("foto");
+            const nomeMusica = document.getElementById("musica-nome");
+
+            audio.pause();
+            audio.currentTime = 0;
+            audio.style.display = "none";
+            foto.style.display = "none";
+            document.body.style.backgroundColor = "#222";
+            nomeMusica.textContent = "";
+        }
+    </script>
+</body>
+</html>

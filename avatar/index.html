@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Criador de Avatar</title>
+    <style>
+        /* Estilo geral da página */
+        body {
+            text-align: center;
+        }
+
+        /* Área onde ficam os controles de cabelo, rosto e corpo */
+        .container {
+            display: flex;
+            /* Coloca as caixas lado a lado */
+            justify-content: center;
+            gap: 40px;
+            /* Espaço entre as caixas */
+            margin-bottom: 20px;
+        }
+
+        /* Estilo de cada caixa de controle */
+        .box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Área dos botões de controle (setas) */
+        .controle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .controle button {
+            margin: 0 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .label {
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        /* Área onde o avatar montado aparece */
+        #avatar {
+            display: flex;
+            flex-direction: column;
+            /* Organiza as imagens em coluna (uma embaixo da outra) */
+            align-items: center;
+            justify-content: center;
+            width: 300px;
+            background-color: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 30px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            gap: 10px;
+            /* Espaço entre as imagens */
+        }
+
+        /* Tamanho das imagens do avatar montado */
+        #avatar img {
+            width: 250px;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Monte seu Avatar</h1>
+
+    <!-- Caixa dos controles de cabelo, rosto e corpo -->
+    <div class="container">
+        <!-- Controle do cabelo -->
+        <div class="box">
+            <div class="label">Cabelo</div>
+            <img id="cabelo" src="imagem/cabelo/cabelo1.png" width="100">
+            <div class="controle">
+                <button onclick="trocar('cabelo', -1)">⬅️</button>
+                <button onclick="trocar('cabelo', 1)">➡️</button>
+            </div>
+        </div>
+
+        <!-- Controle do rosto -->
+        <div class="box">
+            <div class="label">Rosto</div>
+            <img id="rosto" src="imagem/rosto/rosto1.png" width="100">
+            <div class="controle">
+                <button onclick="trocar('rosto', -1)">⬅️</button>
+                <button onclick="trocar('rosto', 1)">➡️</button>
+            </div>
+        </div>
+
+        <!-- Controle do corpo -->
+        <div class="box">
+            <div class="label">Corpo</div>
+            <img id="corpo" src="imagem/corpo/corpo1.png" width="100">
+            <div class="controle">
+                <button onclick="trocar('corpo', -1)">⬅️</button>
+                <button onclick="trocar('corpo', 1)">➡️</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Área onde o avatar montado aparece -->
+    <div id="avatar">
+        <img id="img-cabelo" src="imagem/cabelo/cabelo1.png">
+        <img id="img-rosto" src="imagem/rosto/rosto1.png">
+        <img id="img-corpo" src="imagem/corpo/corpo1.png">
+    </div>
+
+    <!-- Botão para baixar a imagem final -->
+    <button onclick="baixarAvatar()">📥 Baixar Avatar</button>
+
+    <!-- Biblioteca para capturar a imagem da div -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <script>
+        // Define quantas opções existem para cada parte
+        const opcoes = {
+            cabelo: 5,
+            rosto: 5,
+            corpo: 5
+        };
+
+        // Guarda qual opção está selecionada atualmente
+        const estado = {
+            cabelo: 1,
+            rosto: 1,
+            corpo: 1
+        };
+
+        // Função que troca o item (cabelo, rosto ou corpo)
+        function trocar(parte, direcao) {
+            // Atualiza o estado somando ou subtraindo
+            estado[parte] += direcao;
+
+            // Se passou do máximo, volta para 1
+            if (estado[parte] > opcoes[parte]) { 
+                estado[parte] = 1; 
+            }
+
+            // Se passou do mínimo, vai para o máximo
+            if (estado[parte] < 1) { 
+                estado[parte] = opcoes[parte] 
+            }
+
+            // Atualiza a imagem da caixa de controle
+            document.getElementById(parte).src = `imagem/${parte}/${parte}${estado[parte]}.png`;
+
+            // Atualiza a imagem na área do avatar montado
+            document.getElementById(`img-${parte}`).src = `imagem/${parte}/${parte}${estado[parte]}.png`;
+        }
+
+        // Função que gera o download do avatar montado
+        function baixarAvatar() {
+            const avatar = document.getElementById('avatar');
+
+            // Captura a div #avatar como imagem
+            html2canvas(avatar).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'meu_avatar.png'; // Nome do arquivo
+                link.href = canvas.toDataURL(); // Converte para imagem
+                link.click(); // Faz o download automático
+            });
+        }
+    </script>
+
+</body>
+
+</html>
